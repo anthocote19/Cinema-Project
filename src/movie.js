@@ -1,7 +1,7 @@
 import './style.css';
 const API_KEY = 'votre_api_key';
 const filmDetailsContainer = document.getElementById('film-details');
-const filmTitle = document.getElementById('film-title');
+const filmTitle = document.getElementById('film-title'); 
 
 function getFilmIdFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
