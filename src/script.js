@@ -1,5 +1,5 @@
 const API_KEY = 'votre_api_key';
-const filmsContainer = document.getElementById('films-container');
+const filmsContainer = document.getElementById('films-container'); 
 const loadMoreButton = document.getElementById('load-more');
 let page = 1;
 
