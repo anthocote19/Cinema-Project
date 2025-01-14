@@ -5,7 +5,7 @@ const movies = [
     { id: 4, title: "Dunkirk", poster: "https://via.placeholder.com/50x75", link: "movie.html?id=4" },
     { id: 5, title: "Tenet", poster: "https://via.placeholder.com/50x75", link: "movie.html?id=5" },
     { id: 6, title: "The Prestige", poster: "https://via.placeholder.com/50x75", link: "movie.html?id=6" }
-];
+]; 
 
 let searchResults = [];
 let resultsPerPage = 5;
