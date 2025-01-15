@@ -4,10 +4,19 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: 'public/index.html',
-        search: 'public/search.html',
-        movie: 'public/movie.html',
+        main: './index.html', 
+        movie: './movie.html', 
+        search: './search.html',
       },
     },
   },
+  server: {
+    watch: {
+      usePolling: true,
+    },
+    fs: {
+      strict: false, 
+    },
+  },
 });
+
