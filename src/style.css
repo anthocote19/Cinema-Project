@@ -464,3 +464,20 @@ input[type="text"] {
         width: 80%;
     }
 }
+
+.titre-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: lightskyblue; 
+}
+
+.titre-principal {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #ffffff; 
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 0;
+}
