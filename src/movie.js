@@ -1,5 +1,5 @@
 import './style.css';
-const API_KEY = 'votre_api_key';
+const API_KEY = 'fa48d4f9';
 const filmDetailsContainer = document.getElementById('film-details');
 const filmTitle = document.getElementById('film-title'); 
 
