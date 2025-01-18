@@ -1,4 +1,4 @@
-const API_KEY = 'votre_api_key';
+const API_KEY = 'fa48d4f9';
 const filmsContainer = document.getElementById('films-container'); 
 const loadMoreButton = document.getElementById('load-more');
 let page = 1;
