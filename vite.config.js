@@ -1,22 +1,24 @@
 import { defineConfig } from 'vite';
+import FullReload from 'vite-plugin-full-reload';
 
 export default defineConfig({
+  plugins: [
+    FullReload(['./*.html']), 
+  ],
   build: {
     rollupOptions: {
       input: {
-        main: './index.html', 
-        movie: './movie.html', 
-        search: './search.html',
+        main: './index.html',       
+        movie: './movie.html',      
+        search: './search.html',   
       },
     },
   },
   server: {
     watch: {
-      usePolling: true,
+      usePolling: true, 
     },
-    fs: {
-      strict: false, 
-    },
+    port: 4000,          
+    open: true,         
   },
 });
-
