@@ -1,17 +1,18 @@
-<!DOCTYPE html> 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Movies</title>
+    <title>Recherche de Films</title>
     <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
-    <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search for a moe...">
+    <div class="container">
+        <h1>Recherche de Films</h1>
+        <input type="text" id="searchInput" placeholder="Entrez le titre du film..." oninput="search()">
+        <button id="loadMoreButton" onclick="loadMoreResults()">Charger plus</button>
+        <div id="results" class="results"></div>
     </div>
-    <div class="results" id="results"></div>
-    <button class="load-more" id="load-more" style="display: none;">Load More</button>
 
     <script src="./src/search.js"></script>
 </body>
