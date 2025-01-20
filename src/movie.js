@@ -1,58 +1,32 @@
-import './style.css';
-const API_KEY = 'fa48d4f9';
-const filmDetailsContainer = document.getElementById('film-details');
-const filmTitle = document.getElementById('film-title'); 
+document.addEventListener("DOMContentLoaded", () => {
+    const movieDetailsDiv = document.getElementById("movieDetails");
+    const params = new URLSearchParams(window.location.search);
+    const movieID = params.get("id");
 
-function getFilmIdFromURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('id');
-}
-
-
-async function fetchFilmDetails(id) {
-    try {
-        const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}&plot=full`);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Erreur lors de la récupération des détails du film :', error);
-        return null;
-    }
-}
-
-// Fonction pour afficher les détails d'un film
-function afficherFilmDetails(film) {
-    if (!film || film.Response === 'False') {
-        filmDetailsContainer.innerHTML = '<p>Les détails du film sont introuvables.</p>';
+    if (!movieID) {
+        movieDetailsDiv.innerHTML = "<h1>Aucun film sélectionné.</h1>";
         return;
     }
-
-    const dvdReleaseDate = film.DVD ? new Date(film.DVD).toLocaleDateString('fr-FR') : 'Non disponible';
-    filmTitle.textContent = film.Title;
-
-    filmDetailsContainer.innerHTML = `
-        <img src="${film.Poster !== 'N/A' ? film.Poster : 'placeholder.jpg'}" alt="${film.Title}">
-        <h2>${film.Title}</h2>
-        <p><span class="highlight">Genre :</span> ${film.Genre}</p>
-        <p><span class="highlight">Acteurs :</span> ${film.Actors}</p>
-        <p><span class="highlight">Résumé :</span> ${film.Plot}</p>
-        <p><span class="highlight">Notes :</span> ${film.imdbRating}/10</p>
-        <p><span class="highlight">Date de sortie DVD :</span> ${dvdReleaseDate}</p>
-    `;
-}
-
-// Initialisation de la page
-async function init() {
-    const filmId = getFilmIdFromURL();
-    if (!filmId) {
-        filmDetailsContainer.innerHTML = '<p>Film ID manquant dans l\'URL.</p>';
-        return;
-    }
-
-    const filmDetails = await fetchFilmDetails(filmId);
-    afficherFilmDetails(filmDetails);
-}
-
-// Charger les détails du film au chargement de la page
-init();
-
+    fetch(`https://www.omdbapi.com/?apikey=fa48d4f9&i=${movieID}&plot=full`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.Response === "True") {
+                const dvdRelease = data.DVD ? new Date(data.DVD).toLocaleDateString("fr-FR") : "Non disponible";
+                movieDetailsDiv.innerHTML = `
+                    <h1>${data.Title}</h1>
+                    <img src="${data.Poster}" alt="Poster de ${data.Title}" class="movie-poster">
+                    <p><strong>Résumé :</strong> ${data.Plot}</p>
+                    <p><strong>Genre :</strong> ${data.Genre}</p>
+                    <p><strong>Acteurs :</strong> ${data.Actors}</p>
+                    <p><strong>Notes :</strong> ${data.Ratings.map(rating => `${rating.Source}: ${rating.Value}`).join(", ")}</p>
+                    <p><strong>Date de sortie en DVD :</strong> ${dvdRelease}</p>
+                `;
+            } else {
+                movieDetailsDiv.innerHTML = `<h1>Film introuvable.</h1>`;
+            }
+        })
+        .catch(error => {
+            console.error("Erreur lors de la récupération des détails du film :", error);
+            movieDetailsDiv.innerHTML = `<h1>Erreur lors de la récupération des détails du film.</h1>`;
+        });
+});
