@@ -14,13 +14,10 @@
         <a href="./index.html" class="logo">Anthony's and Julien's Movies</a>
         <ul class="nav">
             <li><a href="./index.html"><i class="fa-solid fa-house"></i></a></li>
-            <li><a href="#">Adultes</a></li>
-            <li><a href="#">Enfants</a></li>
+            <li><a href="./search.html">Films disponibles</a></li>
             <li><a href="./index.html">Tendances</a></li>
-            <li><a href="#">Ma Liste</a></li>
+            <li><a href="./liste.html">Ma Liste</a></li>
         </ul>
-    </header>
-    <header>
     </header>
     <section class="titre-section">
         <h1 class="titre-principal">Films en tendances :</h1>
@@ -35,67 +32,76 @@
             </h4>
             <p>Ariel, la benjamine des filles du roi Triton, est une jeune sirène belle et fougueuse dotée d’un tempérament d’aventurière. Rebelle dans l’âme, elle n’a de cesse d’être attirée par le monde qui existe par-delà les flots. Au détour de ses escapades à la surface, elle va tomber sous le charme du prince Eric.</p>
             <div class="button">
-                <a href="#"><i class="fa-solid fa-play"></i> Watch</a>
+                <a href="https://www.disneyplus.com/fr-fr"><i class="fa-solid fa-play"></i> Watch</a>
                 <a href="#"><i class="fa-solid fa-plus"></i> Ma Liste</a>
             </div>
         </div>
         <div class="carousel">
-            <div class="carousel-item">
-                <img src="./images/Avengers.jpg" alt="Avengers">
-                <div class="movie-info">
-                    <h5>Avengers</h5>
-                    <p>Les héros les plus puissants de la Terre s'unissent pour sauver le monde.</p>
-                    <a href="./movie.html">En savoir plus</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="./images/Guardians.jpg" alt="Guardians">
-                <div class="movie-info">
-                    <h5>Guardians of the Galaxy</h5>
-                    <p>Un groupe de marginaux doit sauver la galaxie d'une terrible menace.</p>
-                    <a href="./movie.html">En savoir plus</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="./images/Titanic.jpg" alt="Titanic">
-                <div class="movie-info">
-                    <h5>Titanic</h5>
-                    <p>Un amour interdit naît à bord du célèbre paquebot.</p>
-                    <a href="./movie.html">En savoir plus</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="./images/wall-e.jpg" alt="Wall-E">
-                <div class="movie-info">
-                    <h5>Wall-E</h5>
-                    <p>Un robot solitaire découvre l'amour et sauve l'humanité.</p>
-                    <a href="./movie.html">En savoir plus</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="./images/Cars.jpg" alt="Cars">
-                <div class="movie-info">
-                    <h5>Cars</h5>
-                    <p>Flash McQueen apprend que la victoire n'est pas tout dans la vie.</p>
-                    <a href="./movie.html">En savoir plus</a>
-                </div>
-            </div>
+            <!-- Les films seront ajoutés ici par JavaScript -->
         </div>
         <div class="load-2024">
             <button id="loadMoreFilms">Charger plus de films de 2024</button>
         </div>        
         <a href="https://www.youtube.com/watch?v=Ztw8iOx7R78" class="play"><i class="fa-solid fa-circle-play"></i>Watch Trailer</a>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./src/script.js"></script>
     <script>
-        // Initialisation du carrousel
         $(document).ready(function() {
             $('.carousel').carousel({
-                fullWidth: true, // S'assurer que le carrousel occupe toute la largeur
-                indicators: true // Ajouter des indicateurs si nécessaire
+                fullWidth: true,
+                indicators: true
             });
+        });
+
+        const movies = [
+            {
+                id: "tt0848228",
+                title: "Avengers",
+                description: "Les héros les plus puissants de la Terre s'unissent pour sauver le monde.",
+                poster: "./images/Avengers.jpg"
+            },
+            {
+                id: "tt2015381",
+                title: "Guardians of the Galaxy",
+                description: "Un groupe de marginaux doit sauver la galaxie d'une terrible menace.",
+                poster: "./images/Guardians.jpg"
+            },
+            {
+                id: "tt0120338",
+                title: "Titanic",
+                description: "Un amour interdit naît à bord du célèbre paquebot.",
+                poster: "./images/Titanic.jpg"
+            },
+            {
+                id: "tt0910970",
+                title: "Wall-E",
+                description: "Un robot solitaire découvre l'amour et sauve l'humanité.",
+                poster: "./images/wall-e.jpg"
+            },
+            {
+                id: "tt0317219",
+                title: "Cars",
+                description: "Flash McQueen apprend que la victoire n'est pas tout dans la vie.",
+                poster: "./images/Cars.jpg"
+            }
+        ];
+
+        const carousel = document.querySelector('.carousel');
+        movies.forEach(movie => {
+            const carouselItem = `
+                <div class="carousel-item">
+                    <img src="${movie.poster}" alt="${movie.title}">
+                    <div class="movie-info">
+                        <h5>${movie.title}</h5>
+                        <p>${movie.description}</p>
+                        <a href="./movie.html?id=${movie.id}" class="movie-link">En savoir plus</a>
+                    </div>
+                </div>
+            `;
+            carousel.innerHTML += carouselItem;
         });
     </script>
 </body>
