@@ -1,32 +1,47 @@
-const loadMoreFilmsButton = document.getElementById("loadMoreFilms");
-loadMoreFilmsButton.addEventListener("click", () => {
-    const moreFilms = [
-        {
-            poster: "./images/film2024_1.jpg",
-            name: "Film 2024 A",
-            resume: "Résumé du film 2024 A.",
-            link: "./movie.html"
-        },
-        {
-            poster: "./images/film2024_2.jpg",
-            name: "Film 2024 B",
-            resume: "Résumé du film 2024 B.",
-            link: "./movie.html"
-        }
-    ];
-
-    const carousel = document.querySelector(".carousel");
-    moreFilms.forEach(film => {
-        const filmDiv = document.createElement("div");
-        filmDiv.className = "carousel-item";
-        filmDiv.innerHTML = `
-            <img src="${film.poster}" alt="${film.name}">
-            <div class="movie-info">
-                <h5>${film.name}</h5>
-                <p>${film.resume}</p>
-                <a href="${film.link}">En savoir plus</a>
-            </div>
-        `;
-        carousel.appendChild(filmDiv);
+$(document).ready(function() {
+    $('.carousel').carousel({
+        fullWidth: true,
+        indicators: true
     });
 });
+
+const movies = [
+    { id: "tt0848228", title: "Avengers", description: "Les héros les plus puissants de la Terre s'unissent pour sauver le monde.", poster: "./images/Avengers.jpg" },
+    { id: "tt2015381", title: "Guardians of the Galaxy", description: "Un groupe de marginaux doit sauver la galaxie.", poster: "./images/Guardians.jpg" },
+    { id: "tt0120338", title: "Titanic", description: "Un amour interdit naît à bord du célèbre paquebot.", poster: "./images/Titanic.jpg" },
+    { id: "tt0910970", title: "Wall-E", description: "Un robot solitaire découvre l'amour et sauve l'humanité.", poster: "./images/wall-e.jpg" },
+    { id: "tt0317219", title: "Cars", description: "Une voiture apprend que la victoire n'est pas tout dans la vie.", poster: "./images/Cars.jpg" }
+];
+
+const carousel = document.querySelector('.carousel');
+movies.forEach(movie => {
+    const carouselItem = `
+        <div class="carousel-item">
+            <img src="${movie.poster}" alt="${movie.title}">
+            <div class="movie-info">
+                <h5>${movie.title}</h5>
+                <p>${movie.description}</p>
+                <button class="add-to-list" data-id="${movie.id}" data-title="${movie.title}" data-poster="${movie.poster}"><i class="fa-solid fa-plus"></i> Ma Liste</button>
+            </div>
+        </div>
+    `;
+    carousel.innerHTML += carouselItem;
+});
+
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.add-to-list')) {
+        const button = e.target.closest('.add-to-list');
+        const movie = {
+            id: button.dataset.id,
+            title: button.dataset.title,
+            poster: button.dataset.poster
+        };
+        let myList = JSON.parse(localStorage.getItem('myList')) || [];
+        if (!myList.find(item => item.id === movie.id)) {
+            myList.push(movie);
+            localStorage.setItem('myList', JSON.stringify(myList));
+        }
+    }
+});
+
+
