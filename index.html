@@ -33,21 +33,20 @@
             <p>Ariel, la benjamine des filles du roi Triton, est une jeune sirène belle et fougueuse dotée d’un tempérament d’aventurière. Rebelle dans l’âme, elle n’a de cesse d’être attirée par le monde qui existe par-delà les flots. Au détour de ses escapades à la surface, elle va tomber sous le charme du prince Eric.</p>
             <div class="button">
                 <a href="https://www.disneyplus.com/fr-fr"><i class="fa-solid fa-play"></i> Watch</a>
-                <a href="#"><i class="fa-solid fa-plus"></i> Ma Liste</a>
             </div>
         </div>
         <div class="carousel">
-            <!-- Les films seront ajoutés ici par JavaScript -->
         </div>
         <div class="load-2024">
             <button id="loadMoreFilms">Charger plus de films de 2024</button>
-        </div>        
-        <a href="https://www.youtube.com/watch?v=Ztw8iOx7R78" class="play"><i class="fa-solid fa-circle-play"></i>Watch Trailer</a>
+        </div>
+              
+        <a href="https://www.youtube.com/watch?v=Ztw8iOx7R78" class="play"><i class="fa-solid fa-circle-play"></i>Regarder Trailer</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./src/script.js"></script>
+    <script src="./src/index.js"></script>
     <script>
         $(document).ready(function() {
             $('.carousel').carousel({
@@ -56,38 +55,6 @@
             });
         });
 
-        const movies = [
-            {
-                id: "tt0848228",
-                title: "Avengers",
-                description: "Les héros les plus puissants de la Terre s'unissent pour sauver le monde.",
-                poster: "./images/Avengers.jpg"
-            },
-            {
-                id: "tt2015381",
-                title: "Guardians of the Galaxy",
-                description: "Un groupe de marginaux doit sauver la galaxie d'une terrible menace.",
-                poster: "./images/Guardians.jpg"
-            },
-            {
-                id: "tt0120338",
-                title: "Titanic",
-                description: "Un amour interdit naît à bord du célèbre paquebot.",
-                poster: "./images/Titanic.jpg"
-            },
-            {
-                id: "tt0910970",
-                title: "Wall-E",
-                description: "Un robot solitaire découvre l'amour et sauve l'humanité.",
-                poster: "./images/wall-e.jpg"
-            },
-            {
-                id: "tt0317219",
-                title: "Cars",
-                description: "Flash McQueen apprend que la victoire n'est pas tout dans la vie.",
-                poster: "./images/Cars.jpg"
-            }
-        ];
 
         const carousel = document.querySelector('.carousel');
         movies.forEach(movie => {
