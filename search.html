@@ -3,17 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recherche de Films</title>
+    <title>Site de Cinéma - Recherche de Films</title>
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <a href="./index.html" class="logo">Anthony's and Julien's Movies</a>
+        <ul class="nav">
+            <li><a href="./index.html"><i class="fa-solid fa-house"></i></a></li>
+            <li><a href="#">Adultes</a></li>
+            <li><a href="#">Enfants</a></li>
+            <li><a href="./index.html">Tendances</a></li>
+            <li><a href="#">Ma Liste</a></li>
+        </ul>
+    </header>
     <div class="container">
-        <h1>Recherche de Films</h1>
+        <h1>Rechercher un film ?</h1>
         <input type="text" id="searchInput" placeholder="Entrez le titre du film..." oninput="search()">
         <button id="loadMoreButton" onclick="loadMoreResults()">Charger plus</button>
         <div id="results" class="results"></div>
     </div>
-
     <script src="./src/search.js"></script>
 </body>
 </html>
