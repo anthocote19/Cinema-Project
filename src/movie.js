@@ -7,8 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
         movieDetailsDiv.innerHTML = "<h1>Aucun film sélectionné.</h1>";
         return;
     }
-    fetch(`https://www.omdbapi.com/?apikey=fa48d4f9&i=${movieID}&plot=full`)
-        .then(response => response.json())
+
+    const apiKey = "fa48d4f9";
+    const url = `https://www.omdbapi.com/?apikey=${apiKey}&i=${movieID}&plot=full`;
+
+
+    console.log("URL API :", url);
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.Response === "True") {
                 const dvdRelease = data.DVD ? new Date(data.DVD).toLocaleDateString("fr-FR") : "Non disponible";
@@ -22,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p><strong>Date de sortie en DVD :</strong> ${dvdRelease}</p>
                 `;
             } else {
-                movieDetailsDiv.innerHTML = `<h1>Film introuvable.</h1>`;
+                movieDetailsDiv.innerHTML = `<h1>Film introuvable : ${data.Error}</h1>`;
             }
         })
         .catch(error => {
