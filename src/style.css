@@ -20,6 +20,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
+    background-color: lightgoldenrodyellow;
 }
 
 header {
@@ -27,7 +28,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: darkcyan;
+    background-color: gray;
     color: var(--text-light);
 }
 
@@ -76,7 +77,7 @@ section {
     border-radius: 10px;
     overflow: hidden;
     transition: var(--transition);
-    background: var(--text-light);
+    background:lightskyblue;
 }
 
 .card:hover {
@@ -522,4 +523,5 @@ input[type="text"] {
     display: flex;
     text-align: center;
     justify-self: center;
+    justify-content: center;
 }
