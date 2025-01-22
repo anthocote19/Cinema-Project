@@ -34,6 +34,25 @@ npm install
 # Start the server on a local port
 npm run dev
 
+
+# Using the OMDb API (The Open Movie Database)
+This application uses the OMDb API to fetch movie data. To access the API, you need an API key.
+
+# Getting an API Key
+Visit the OMDb API website and sign up to obtain an API key.
+You will receive your API key via email after completing the registration.
+
+
+# Using the API Key in Requests
+Once you have your API key, you can make requests to the OMDb API using the following structure:
+
+=> https://www.omdbapi.com/?apikey=[your_API_key]&s=[movie_title]
+
+# For a movie like Transformers the request will look like that : 
+
+https://www.omdbapi.com/?apikey=[your_API_key]&s=transformers
+
+
 # Clone this repository to access the project:
 git clone https://github.com/anthocote19/Cinema-Project.git
 
