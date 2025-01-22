@@ -5,7 +5,8 @@ To achieve this goal, the cinema managers decide to commission you to create an 
 
 
 # Cinema App
-Description
+Description :
+
 A web application for displaying and searching movies available online. It offers a modern and intuitive user interface for exploring films.
 
 # GitHub Repository Link
