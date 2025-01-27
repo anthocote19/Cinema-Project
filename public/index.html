@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,87 +12,74 @@
 </head>
 <body>
     <header>
-        <a href="#" class="logo">Anthony's and Julien's Movies</a>
+        <a href="./index.html" class="logo">AJ's Movies</a>
         <ul class="nav">
-            <li><a href="#"><i class="fa-solid fa-house"></i></a></li>
-            <li><a href="#">Adultes</a></li>
-            <li><a href="#">Enfants</a></li>
-            <li><a href="#">Tendances</a></li>
-            <li><a href="#">Ma Liste</a></li>
+            <li><a href="./index.html"><i class="fa-solid fa-house"></i></a></li>
+            <li><a href="./search.html">Films disponibles</a></li>
+            <li><a href="./index.html">Tendances</a></li>
         </ul>
-        <div class="search">
-            <input type="text" placeholder="Search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
     </header>
-    <div class="banner">
-        <div class="content active">
-            <img src="./images/the-little-mermaid-title.png" alt="The Little Mermaid Title" class="movie-title">
-            <h4>
-                <span>2025</span><span><i>12+</i></span>
-                <span>2h 14min</span><span>Aventure</span>
-            </h4>
-            <p>Ariel, la benjamine des filles du roi Triton, est une jeune sirène belle et fougueuse dotée d’un tempérament d’aventurière. Rebelle dans l’âme, elle n’a de cesse d’être attirée par le monde qui existe par-delà les flots. Au détour de ses escapades à la surface, elle va tomber sous le charme du prince Eric.</p>
-            <div class="button">
-                <a href="#"><i class="fa-solid fa-play"></i> Watch</a>
-                <a href="#"><i class="fa-solid fa-plus"></i> Ma Liste</a>
-            </div>
-        </div>
-        <div class="carousel">
-            <div class="carousel-item">
-                <img src="./images/Avengers.jpg" alt="Avengers">
-                <div class="movie-info">
-                    <h5>Avengers</h5>
-                    <p>Les héros les plus puissants de la Terre s'unissent pour sauver le monde.</p>
-                    <a href="./movie.html">En savoir plus</a>
+    <section class="titre-section">
+        <h1 class="titre-principal">Films en tendances :</h1>
+        <div class="row" id="filmsContainer">
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./images/Avengers.jpg" alt="Avengers">
+                            <span class="card-title">Avengers</span>
+                        </div>
+                        <div class="card-content">
+                            <p>Avengers réunit plusieurs héros emblématiques de l'univers Marvel pour défendre la Terre contre une menace intergalactique. Nick Fury, le directeur du S.H.I.E.L.D., recrute Iron Man, Captain America, Thor, Hulk, Black Widow, et Hawkeye pour faire face à Loki, un demi-dieu en quête de pouvoir. Ensemble, ils doivent surmonter leurs différences et former une équipe soudée pour empêcher Loki d'envahir la Terre avec son armée extraterrestre.</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="./movie.html?id=tt0848228">En savoir plus</a> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="filmsContainer">
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./images/Cars.jpg" alt="Cars">
+                            <span class="card-title">Cars</span>
+                        </div>
+                        <div class="card-content">
+                            <p>Cars raconte l’histoire de Flash McQueen, une voiture de course brillante mais arrogante, qui se retrouve accidentellement dans la petite ville de Radiator Springs après avoir pris un mauvais virage. Là, il rencontre des personnages pittoresques comme le vieux Doc Hudson et la gentille Sally. À travers sa vie dans cette ville, il apprend l'importance de l'amitié, de l'humilité, et de ralentir pour apprécier ce qui compte vraiment.</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="./movie.html?id=tt0317219">En savoir plus</a> 
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="filmsContainer">
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./images/Titanic.jpg" alt="Titanic">
+                            <span class="card-title">Titanic</span>
+                        </div>
+                        <div class="card-content">
+                            <p>Titanic, réalisé par James Cameron, raconte l’histoire d’un amour improbable entre Jack, un jeune artiste pauvre, et Rose, une aristocrate engagée dans un mariage arrangé, à bord du légendaire paquebot Titanic. Alors que le navire sombre dans l’océan Atlantique suite à une collision avec un iceberg, Jack et Rose doivent lutter pour leur survie. L'histoire est marquée par la tragédie de la catastrophe, mais aussi par la passion et l'intensité de leur relation.</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="./movie.html?id=tt0120338">En savoir plus</a> 
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img src="./images/Guardians.jpg" alt="Guardians">
-                <div class="movie-info">
-                    <h5>Guardians of the Galaxy</h5>
-                    <p>Un groupe de marginaux doit sauver la galaxie d'une terrible menace.</p>
-                    <a href="./movie.html">En savoir plus</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="./images/Titanic.jpg" alt="Titanic">
-                <div class="movie-info">
-                    <h5>Titanic</h5>
-                    <p>Un amour interdit naît à bord du célèbre paquebot.</p>
-                    <a href="./movie.html">En savoir plus</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="./images/wall-e.jpg" alt="Wall-E">
-                <div class="movie-info">
-                    <h5>Wall-E</h5>
-                    <p>Un robot solitaire découvre l'amour et sauve l'humanité.</p>
-                    <a href="./movie.html">En savoir plus</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="./images/Cars.jpg" alt="Cars">
-                <div class="movie-info">
-                    <h5>Cars</h5>
-                    <p>Flash McQueen apprend que la victoire n'est pas tout dans la vie.</p>
-                    <a href="./movie.html">En savoir plus</a>
-                </div>
-            </div>
-        </div>        
-        <a href="https://www.youtube.com/watch?v=Ztw8iOx7R78" class="play"><i class="fa-solid fa-circle-play"></i>Watch Trailer</a>
+        </section>
+        <section class = "bouton">
+            <button id="loadMoreButton">Charger plus de Films en 2024</button>
+        </section>
+    </section>
+    
+ 
+         
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-        // Initialisation du carrousel
-        $(document).ready(function() {
-            $('.carousel').carousel({
-                fullWidth: true, // S'assurer que le carrousel occupe toute la largeur
-                indicators: true // Ajouter des indicateurs si nécessaire
-            });
-        });
-    </script>
+    <script src="./src/script.js"></script>
+    <script src="./src/bouton.js"></script>
+
 </body>
 </html>
