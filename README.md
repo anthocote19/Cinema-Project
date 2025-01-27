@@ -9,9 +9,6 @@ Description :
 
 A web application for displaying and searching movies available online. It offers a modern and intuitive user interface for exploring films.
 
-# GitHub Repository Link
-Access the project on GitHub via this link:
-https://github.com/anthocote19/Cinema-Project
 
 # Features
 
