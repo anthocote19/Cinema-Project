@@ -1,52 +1,57 @@
-const movies = [
-    { id: 1, title: "Inception", poster: "https://via.placeholder.com/50x75", link: "movie.html?id=1" },
-    { id: 2, title: "The Dark Knight", poster: "https://via.placeholder.com/50x75", link: "movie.html?id=2" },
-    { id: 3, title: "Interstellar", poster: "https://via.placeholder.com/50x75", link: "movie.html?id=3" },
-    { id: 4, title: "Dunkirk", poster: "https://via.placeholder.com/50x75", link: "movie.html?id=4" },
-    { id: 5, title: "Tenet", poster: "https://via.placeholder.com/50x75", link: "movie.html?id=5" },
-    { id: 6, title: "The Prestige", poster: "https://via.placeholder.com/50x75", link: "movie.html?id=6" }
-]; 
+let currentPage = 1; 
+const resultsPerPage = 5; 
+let allResults = []; 
+function search() {
+    const query = document.getElementById("searchInput").value;
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
 
-let searchResults = [];
-let resultsPerPage = 5;
-let currentPage = 1;
+    if (!query) {
+        return;
+    }
 
-const searchBar = document.getElementById('search-bar');
-const resultsDiv = document.getElementById('results');
-const loadMoreButton = document.getElementById('load-more');
-
-function renderResults() {
-    resultsDiv.innerHTML = '';
-    const start = (currentPage - 1) * resultsPerPage;
-    const end = currentPage * resultsPerPage;
-
-    searchResults.slice(0, end).forEach(movie => {
-        const resultDiv = document.createElement('div');
-        resultDiv.className = 'result';
-        resultDiv.innerHTML = `
-            <img src="${movie.poster}" alt="${movie.title}">
-            <div>
-                <h3>${movie.title}</h3>
-                <a href="${movie.link}">Learn more</a>
-            </div>
-        `;
-        resultsDiv.appendChild(resultDiv);
-    });
-
-    loadMoreButton.style.display = end < searchResults.length ? 'block' : 'none';
+    fetch(`https://www.omdbapi.com/?apikey=fa48d4f9&s=${query}&page=${currentPage}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.Search) {
+                allResults = data.Search; 
+                displayResults(allResults.slice(0, resultsPerPage)); 
+            } else {
+                resultsDiv.innerHTML = "Aucun résultat trouvé.";
+            }
+        })
+        .catch(error => {
+            resultsDiv.innerHTML = "Erreur lors de la recherche.";
+        });
 }
 
-searchBar.addEventListener('input', () => {
-    const query = searchBar.value.toLowerCase();
-    searchResults = movies.filter(movie => movie.title.toLowerCase().includes(query));
-    currentPage = 1;
-    renderResults();
-});
+function displayResults(results) {
+    const resultsDiv = document.getElementById("results");
+    
+    results.forEach(movie => {
+        const movieDiv = document.createElement("div");
+        movieDiv.classList.add("movie");
 
-loadMoreButton.addEventListener('click', () => {
+        movieDiv.innerHTML = `
+            <img src="${movie.Poster}" alt="Poster de ${movie.Title}" class="movie-poster">
+            <h3>${movie.Title}</h3>
+            <a href="movie.html?id=${movie.imdbID}" class="movie-link">En savoir plus</a>
+        `;
+        resultsDiv.appendChild(movieDiv);
+    });
+}
+
+function loadMoreResults() {
     currentPage++;
-    renderResults();
-});
-
-
-searchBar.dispatchEvent(new Event('input'));
+    const query = document.getElementById("searchInput").value;
+    fetch(`https://www.omdbapi.com/?apikey=fa48d4f9&s=${query}&page=${currentPage}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.Search) {
+                displayResults(data.Search);
+            }
+        })
+        .catch(error => {
+            console.error("Erreur lors du chargement des résultats supplémentaires:", error);
+        });
+}
